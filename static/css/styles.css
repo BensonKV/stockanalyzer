@@ -1,0 +1,53 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-header {
+    border-radius: 10px 10px 0 0 !important;
+}
+
+.img-fluid {
+    border-radius: 5px;
+}
+
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.navbar.dark-mode {
+    background-color: #333;
+}
+
+.card.dark-mode {
+    background-color: #222;
+    color: #e0e0e0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+footer.dark-mode {
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+/* Button color changes */
+.btn-outline-light.dark-mode {
+    color: #e0e0e0;
+    border-color: #e0e0e0;
+}
+
+.btn-outline-light.dark-mode:hover {
+    background-color: #444;
+    color: #fff;
+}

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Analyzer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Gradient Background */
+        body {
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+        }
+
+        .container {
+            padding-top: 50px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 40px;
+        }
+
+        /* Stock Card Styles */
+        .stock-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stock-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .stock-card h5 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .stock-card p {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            color: #ddd;
+        }
+
+        .stock-card .btn {
+            margin-top: 10px;
+            padding: 12px 25px;
+            border-radius: 30px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .stock-card .btn:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        /* Category Titles */
+        .category-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #fff;
+            border-bottom: 2px solid #fff;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+
+        /* Error Message */
+        .alert {
+            font-size: 1.2rem;
+            font-weight: 500;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 767px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .stock-card {
+                margin: 10px 0;
+                padding: 20px;
+            }
+
+            .stock-card h5 {
+                font-size: 1.1rem;
+            }
+
+            .category-title {
+                font-size: 1.5rem;
+            }
+
+            .stock-card .btn {
+                font-size: 0.9rem;
+                padding: 10px 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="text-center mb-4">Welcome to Stock Analyzer</h1>
+
+    <!-- Error Message -->
+    {% if error %}
+        <div class="alert alert-danger mt-3">
+            <strong>Error:</strong> {{ error }}
+        </div>
+    {% endif %}
+
+    <!-- Stock Categories -->
+    <div id="stockCategories">
+
+        <!-- Technology Stocks -->
+        <div class="category-title">Technology</div>
+        <div class="row">
+            {% for stock in stocks['technology'] %}
+                <div class="col-md-3">
+                    <div class="stock-card">
+                        <h5>{{ stock.name }}</h5>
+                        <p>{{ stock.ticker }}</p>
+                        <a href="/analyze?ticker={{ stock.ticker }}" class="btn">View Details</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Finance Stocks -->
+        <div class="category-title">Finance</div>
+        <div class="row">
+            {% for stock in stocks['finance'] %}
+                <div class="col-md-3">
+                    <div class="stock-card">
+                        <h5>{{ stock.name }}</h5>
+                        <p>{{ stock.ticker }}</p>
+                        <a href="/analyze?ticker={{ stock.ticker }}" class="btn">View Details</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Consumer Goods Stocks -->
+        <div class="category-title">Consumer Goods</div>
+        <div class="row">
+            {% for stock in stocks['consumer_goods'] %}
+                <div class="col-md-3">
+                    <div class="stock-card">
+                        <h5>{{ stock.name }}</h5>
+                        <p>{{ stock.ticker }}</p>
+                        <a href="/analyze?ticker={{ stock.ticker }}" class="btn">View Details</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
